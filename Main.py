@@ -24,7 +24,7 @@ def merge(array, l, m, r):
             k += 1
     for i in range(l, r + 1):
         array[i] = array2[i]
-def merge_sort(data) -> None:
+def merge_sort(data, l, r) -> None:
   # Write code here
   if l < r:
         m = (l + r) // 2
@@ -41,5 +41,5 @@ for item in input_data.split(', '):
     data.append(int(item))
   elif item.lstrip("-").isnumeric():
     data.append(int(item))
-merge_sort(data)
+merge_sort(data, 0, len(data) - 1)
 print(data)
