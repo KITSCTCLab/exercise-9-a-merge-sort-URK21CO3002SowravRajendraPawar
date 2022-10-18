@@ -1,37 +1,36 @@
 from typing import List
-def merge(array, l, m, r):
-    array2 = [0 for i in range(r + 1)]
-    i = l
-    j = m + 1
-    k = l
-    while i <= m and j <= r:
-        if array[i] <= array[j]:
-            array2[k] = array[i]
-            i += 1
-        else:
-            array2[k] = array[j]
-            j += 1
-        k += 1
-    if i > m:
-        while j <= r:
-            array2[k] = array[j]
-            j += 1
-            k += 1
-    else:
-        while i <= m:
-            array2[k] = array[i]
-            i += 1
-            k += 1
-    for i in range(l, r + 1):
-        array[i] = array2[i]
-def merge_sort(array, l, r) -> None:
-  # Write code here
-  if l < r:
-        m = (l + r) // 2
-        merge_sort(array, l, m)
-        merge_sort(array, m + 1, r)
-        merge(array, l, m, r)
 
+def merge_sort(data) -> None:
+  # Write code here
+  if len(data) >1:
+    mid = (len(data))//2
+    data_left = data[:mid]
+    data_right = data[mid:]
+    merge_sort(data_left)
+    merge_sort(data_right)
+ 
+    a = 0 # for left_ata
+    b = 0 # for right_data
+    c = 0 # for main_data
+
+    while a<len(data_left) and b<len(data_right):
+      if data_left[a] <= data_right[b]:
+        data[c] = data_left[a]
+        a+=1
+      else:
+        data[c] = data_right[b]
+        b+=1
+      c+=1
+
+    while a < len(data_left):
+      data[c] = data_left[a]
+      a+=1
+      c+=1
+    while b < len(data_right):
+      data[c] = data_right[b]
+      b+=1
+      c+=1
+    return data
 
 # Do not change the following code
 input_data = input()
@@ -41,5 +40,5 @@ for item in input_data.split(', '):
     data.append(int(item))
   elif item.lstrip("-").isnumeric():
     data.append(int(item))
-merge_sort(data, 0, len(data) - 1)
+merge_sort(data)
 print(data)
