@@ -24,7 +24,7 @@ def merge(array, l, m, r):
             k += 1
     for i in range(l, r + 1):
         array[i] = array2[i]
-def merge_sort(data, l, r) -> None:
+def merge_sort(array, l, r) -> None:
   # Write code here
   if l < r:
         m = (l + r) // 2
